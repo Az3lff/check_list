@@ -1,0 +1,2 @@
+generate_task:
+	protoc -I api/grpc/proto api/grpc/proto/task.proto --go_out=./internal/delivery/grpc/task --go_opt=paths=source_relative --go-grpc_out=./internal/delivery/grpc/task --go-grpc_opt=paths=source_relative
