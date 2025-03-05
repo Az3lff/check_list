@@ -18,10 +18,10 @@ const (
 type Server struct {
 	cfg        config.GRPCServer
 	grpcServer *grpc.Server
-	svc        *service.TaskService
+	svc        service.CheckList
 }
 
-func New(cfg config.GRPCServer, service *service.TaskService) *Server {
+func New(cfg config.GRPCServer, service service.CheckList) *Server {
 	srv := grpc.NewServer(
 		grpc.KeepaliveParams(keepalive.ServerParameters{
 			MaxConnectionIdle: cfg.MaxConnectionIdle,

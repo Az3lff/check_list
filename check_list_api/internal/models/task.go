@@ -14,6 +14,11 @@ type CreateTaskRequest struct {
 	Done        bool
 }
 
+type GetTaskRequest struct {
+	UserID int64
+	TaskID int64
+}
+
 type DeleteTaskRequest struct {
 	UserID int64
 	TaskID int64

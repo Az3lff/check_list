@@ -13,10 +13,10 @@ import (
 type server struct {
 	task.UnimplementedTaskServer
 
-	svc *service.TaskService
+	svc service.CheckList
 }
 
-func Register(gRPC *grpc.Server, service *service.TaskService) {
+func Register(gRPC *grpc.Server, service service.CheckList) {
 	task.RegisterTaskServer(gRPC, &server{
 		svc: service,
 	})

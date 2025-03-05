@@ -1,7 +1,6 @@
 package app
 
 import (
-	"context"
 	"fmt"
 
 	"github.com/Az3lff/check_list/internal/app/server"
@@ -11,13 +10,16 @@ import (
 )
 
 func Run(cfg *config.Config) error {
-	repo, err := repository.NewTaskRepository(context.Background(), cfg.Postgres)
-	if err != nil {
-		return fmt.Errorf("failed connecting to PostgreSQL database: %w", err)
-	}
+	//TODO: add pgxpool
 
-	srv := server.New(cfg.GRPCServer, service.NewTaskService(repo))
-	if err := srv.Start(); err != nil {
+	//if err != nil {
+	//	return fmt.Errorf("failed connecting to PostgreSQL database: %w", err)
+	//}
+
+	repos := repository.NewRepositories(nil)
+	services := service.NewServices(repos)
+
+	if err := server.New(cfg.GRPCServer, services).Start(); err != nil {
 		return fmt.Errorf("failed starting server: %w", err)
 	}
 
