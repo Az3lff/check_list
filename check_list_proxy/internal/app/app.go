@@ -8,7 +8,7 @@ import (
 	"github.com/Az3lff/check_list_proxy/internal/config"
 	"github.com/Az3lff/check_list_proxy/internal/delivery/grpc"
 	"github.com/Az3lff/check_list_proxy/internal/delivery/http"
-	"github.com/Az3lff/check_list_proxy/internal/service"
+	"github.com/Az3lff/check_list_proxy/internal/service/check_list"
 )
 
 func Run(cfg *config.Config) error {
@@ -19,7 +19,7 @@ func Run(cfg *config.Config) error {
 		return fmt.Errorf("cannot to create grpc client: %w", err)
 	}
 
-	svs := service.NewTaskService(cli)
+	svs := check_list.NewTaskService(cli)
 	http.SetupRoutes(app, cfg.HTTPServer, svs)
 
 	return app.Listen(cfg.HTTPServer.Address)

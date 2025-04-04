@@ -21,8 +21,8 @@ func NewRepositories(db *pgxpool.Pool) *Repositories {
 
 type CheckList interface {
 	CreateTask(ctx context.Context, req models.CreateTaskRequest) (*models.TaskIDResponse, error)
-	GetTaskByID(ctx context.Context, req models.GetTaskRequest) (*models.Task, error)
-	GetAllTasksByUserID(ctx context.Context, userID int64) (*models.GetListResponse, error)
+	GetTask(ctx context.Context, req models.GetTaskRequest) (*models.Task, error)
+	GetList(ctx context.Context, userID int64) (*models.GetListResponse, error)
 	DeleteTask(ctx context.Context, req models.DeleteTaskRequest) (*models.TaskIDResponse, error)
 	DoneTask(ctx context.Context, req models.DoneTaskRequest) (*models.TaskIDResponse, error)
 }

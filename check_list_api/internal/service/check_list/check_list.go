@@ -27,7 +27,7 @@ func (s *CheckListService) CreateTask(ctx context.Context, req models.CreateTask
 }
 
 func (s *CheckListService) GetTask(ctx context.Context, req models.GetTaskRequest) (*models.Task, error) {
-	resp, err := s.repo.GetTaskByID(ctx, req)
+	resp, err := s.repo.GetTask(ctx, req)
 	if err != nil {
 		return nil, err
 	}
@@ -36,7 +36,7 @@ func (s *CheckListService) GetTask(ctx context.Context, req models.GetTaskReques
 }
 
 func (s *CheckListService) GetList(ctx context.Context, userID int64) (*models.GetListResponse, error) {
-	resp, err := s.repo.GetAllTasksByUserID(ctx, userID)
+	resp, err := s.repo.GetList(ctx, userID)
 	if err != nil {
 		return nil, err
 	}

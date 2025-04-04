@@ -33,7 +33,7 @@ func (r *CheckListRepo) CreateTask(ctx context.Context, req models.CreateTaskReq
 	return &resp, nil
 }
 
-func (r *CheckListRepo) GetTaskByID(ctx context.Context, req models.GetTaskRequest) (*models.Task, error) {
+func (r *CheckListRepo) GetTask(ctx context.Context, req models.GetTaskRequest) (*models.Task, error) {
 	rows, err := r.db.Query(ctx, queryGetTaskByUserIDAndTaskID, req.UserID, req.TaskID)
 	if err != nil {
 		return nil, err
@@ -48,7 +48,7 @@ func (r *CheckListRepo) GetTaskByID(ctx context.Context, req models.GetTaskReque
 	return &resp, nil
 }
 
-func (r *CheckListRepo) GetAllTasksByUserID(ctx context.Context, userID int64) (*models.GetListResponse, error) {
+func (r *CheckListRepo) GetList(ctx context.Context, userID int64) (*models.GetListResponse, error) {
 	rows, err := r.db.Query(ctx, queryGetAllTasksByUserID, userID)
 	if err != nil {
 		return nil, err

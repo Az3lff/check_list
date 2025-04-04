@@ -44,6 +44,10 @@ func (c *Client) CreateTask(ctx context.Context, req *task.CreateTaskRequest) (*
 	return c.api.CreateTask(ctx, req)
 }
 
+func (c *Client) GetTask(ctx context.Context, req *task.GetTaskRequest) (*task.TaskIDResponse, error) {
+	return c.api.GetTask(ctx, req)
+}
+
 func (c *Client) GetList(ctx context.Context, req *task.GetListRequest) (*task.GetListResponse, error) {
 	return c.api.GetList(ctx, req)
 }
